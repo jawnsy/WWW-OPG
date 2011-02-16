@@ -1,9 +1,6 @@
 #!/usr/bin/perl -T
 
-# t/04live.t
-#  Module live functionality tests (requires Internet connectivity)
-#
-# $Id$
+# Module live functionality tests (requires Internet connectivity)
 
 use strict;
 use warnings;

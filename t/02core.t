@@ -1,9 +1,6 @@
 #!/usr/bin/perl -T
 
-# t/03core.t
-#  Core functionality tests that do not require Internet connectivity
-#
-# $Id$
+# Core functionality tests that do not require Internet connectivity
 
 use strict;
 use warnings;
@@ -21,8 +18,8 @@ my @methods = (
   'power',
 );
 
-# There are 2 non-method tests
-plan tests => (4 + scalar(@methods));
+# There are 5 non-method tests
+plan tests => (5 + scalar(@methods));
 
 foreach my $meth (@methods) {
   ok(WWW::OPG->can($meth), 'Method "' . $meth . '" exists.');
@@ -31,6 +28,9 @@ foreach my $meth (@methods) {
 # Test the constructor initialization
 my $opg = WWW::OPG->new;
 isa_ok($opg, 'WWW::OPG');
+
+# Make sure user agent looks good
+ok($opg->{useragent}->agent =~ /^WWW::OPG/, 'User agent has package name');
 
 # If no data is retrieved, the answers should be undefined
 ok(!defined $opg->power, 'Power is not defined');

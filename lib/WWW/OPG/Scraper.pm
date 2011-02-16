@@ -1,9 +1,5 @@
-# WWW::OPG::Scraper
-#  Perl interface to Ontario Power Generation's site
-#
-# $Id$
-
 package WWW::OPG::Scraper;
+# ABSTRACT: Perl interface to OPG's power generation statistics (web scraper)
 
 use strict;
 use warnings;
@@ -11,19 +7,6 @@ use Carp ();
 
 use LWP::UserAgent;
 use DateTime;
-
-=head1 NAME
-
-WWW::OPG::Scraper - Drop-in module using web page scraping
-
-=head1 VERSION
-
-Version 1.004 ($Id$)
-
-=cut
-
-our $VERSION = '1.004';
-$VERSION = eval $VERSION;
 
 =head1 SYNOPSIS
 
@@ -64,7 +47,7 @@ sub new {
   }
   else {
     my $ua = LWP::UserAgent->new;
-    $ua->agent(__PACKAGE__ . '/' . $VERSION . ' ' . $ua->_agent);
+    $ua->agent($class . '/' . $class->VERSION . ' ' . $ua->_agent);
     $self->{useragent} = $ua;
   }
 
@@ -170,32 +153,9 @@ sub last_updated {
   return $self->{updated};
 }
 
-=head1 AUTHOR
-
-Jonathan Yu E<lt>jawnsy@cpan.orgE<gt>
-
 =head1 SEE ALSO
 
 L<WWW::OPG>
-
-=head1 SUPPORT
-
-Please file bugs for this module under the C<WWW::OPG> distribution. For
-more information, see L<WWW::OPG>'s perldoc.
-
-=head1 LICENSE
-
-This has the same copyright and licensing terms as L<WWW::OPG>.
-
-=head1 DISCLAIMER OF WARRANTY
-
-The software is provided "AS IS", without warranty of any kind, express or
-implied, including but not limited to the warranties of merchantability,
-fitness for a particular purpose and noninfringement. In no event shall the
-authors or copyright holders be liable for any claim, damages or other
-liability, whether in an action of contract, tort or otherwise, arising from,
-out of or in connection with the software or the use or other dealings in
-the software.
 
 =cut
 
